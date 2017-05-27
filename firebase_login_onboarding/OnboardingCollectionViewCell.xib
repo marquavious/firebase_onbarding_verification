@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnboardingCollectionViewCell" id="gTV-IL-0wX" customClass="OnboardingCollectionViewCell" customModule="firebase_login_onboarding" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="487"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="487"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RvP-Tj-gUn">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="487"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X89-Eh-HAh">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="342"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donate Effortlesly to NGO'S World Wide!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xzR-kq-OLb">
+                                <rect key="frame" x="16.5" y="342" width="310" height="145"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xzR-kq-OLb" firstAttribute="top" secondItem="X89-Eh-HAh" secondAttribute="bottom" id="ANR-Xk-Ad9"/>
+                            <constraint firstAttribute="trailing" secondItem="X89-Eh-HAh" secondAttribute="trailing" id="KyU-7G-dnc"/>
+                            <constraint firstItem="X89-Eh-HAh" firstAttribute="top" secondItem="RvP-Tj-gUn" secondAttribute="top" id="bGl-QO-gsl"/>
+                            <constraint firstItem="X89-Eh-HAh" firstAttribute="leading" secondItem="RvP-Tj-gUn" secondAttribute="leading" id="g86-Xr-kur"/>
+                            <constraint firstAttribute="trailing" secondItem="xzR-kq-OLb" secondAttribute="trailing" constant="16" id="je2-Gj-y8i"/>
+                            <constraint firstItem="xzR-kq-OLb" firstAttribute="top" secondItem="X89-Eh-HAh" secondAttribute="bottom" id="lbl-ki-8Dx"/>
+                            <constraint firstItem="xzR-kq-OLb" firstAttribute="leading" secondItem="RvP-Tj-gUn" secondAttribute="leading" constant="16" id="lnC-ec-Wgz"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="0.27058823529999998" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="RvP-Tj-gUn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Obo-UM-wOc"/>
+                <constraint firstItem="RvP-Tj-gUn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YNw-Z0-oEZ"/>
+                <constraint firstAttribute="trailing" secondItem="RvP-Tj-gUn" secondAttribute="trailing" id="boh-re-X1G"/>
+                <constraint firstAttribute="bottom" secondItem="RvP-Tj-gUn" secondAttribute="bottom" id="vGU-9Z-3p3"/>
+            </constraints>
+            <size key="customSize" width="561" height="700"/>
+            <point key="canvasLocation" x="142.5" y="160"/>
+        </collectionViewCell>
+    </objects>
+</document>
