@@ -49,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func signUp(){
-        print("sighn up")
+        performSegue(withIdentifier: "signUp", sender: self)
     }
     
     

@@ -11,7 +11,21 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class SignUpViewController: UIViewController {
+protocol CloseModelDelegate {
+    func dismissControler()
+    func stopLoader()
+}
+
+class SignUpViewController: UIViewController, CloseModelDelegate {
+    
+    func stopLoader() {
+        endLoader()
+    }
+
+    func dismissControler() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var verificationStackView: UIStackView!
     
@@ -23,8 +37,8 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //         checkForVerification()
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkForVerification), userInfo: nil, repeats: true)
-        self.sendEmailVerification()
+//        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkForVerification), userInfo: nil, repeats: true)
+//        self.sendEmailVerification()
 
 //                logOut()
         //        waitForVerification {
@@ -50,9 +64,9 @@ class SignUpViewController: UIViewController {
             
         })
     }
-    
-    @IBAction func exitVC(_ sender: Any) {
         
+    @IBAction func exitVC(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func displayAlert(_ title: String, message: String){
@@ -79,45 +93,43 @@ class SignUpViewController: UIViewController {
                 self.displayAlert("Error", message: error!.localizedDescription)
             }
             self.sendEmailVerification()
-            self.waitForVerification()
         })
-        
     }
     
     func sendEmailVerification(){
         startLoader()
         FIRAuth.auth()?.currentUser?.sendEmailVerification { (error) in
             if error != nil{
+                self.endLoader()
                 self.displayAlert("Error", message: error!.localizedDescription)
             }
+            self.performSegue(withIdentifier: "emailVerified", sender: self)
         }
     }
     
-    func waitForVerification(){
-        
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkForVerification), userInfo: nil, repeats: true)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "emailVerified"{
+            let destination = segue.destination as! SucessViewController
+            destination.delegate = self
+        }
     }
     
+//    func waitForVerification(){
+//        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkForVerification), userInfo: nil, repeats: true)
+//    }
+//    
 
-    
-    func checkForVerification(){
-//        FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
-            // ...
-//            print("IT HAS BEEN VERIFIED")
-            
-            
-            
-            if (FIRAuth.auth()?.currentUser!.isEmailVerified)!{
-                print("VERIFIED")
-            }else{
-                print("waiting...")
-            }
-//        }
-    }
     
     func startLoader(){
         verificationStackView.alpha = 1
         activityIndicator.startAnimating()
+        mainStackView.alpha = 0
+    }
+    
+    func endLoader(){
+        verificationStackView.alpha = 0
+        activityIndicator.stopAnimating()
+        mainStackView.alpha = 1
     }
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
