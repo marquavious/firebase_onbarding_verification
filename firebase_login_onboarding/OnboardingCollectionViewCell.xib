@@ -12,46 +12,77 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnboardingCollectionViewCell" id="gTV-IL-0wX" customClass="OnboardingCollectionViewCell" customModule="firebase_login_onboarding" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="343" height="487"/>
+            <rect key="frame" x="0.0" y="0.0" width="386" height="498"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="343" height="487"/>
+                <rect key="frame" x="0.0" y="0.0" width="386" height="498"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RvP-Tj-gUn">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="487"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YZT-5E-ngm">
+                        <rect key="frame" x="0.0" y="0.0" width="513" height="525"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X89-Eh-HAh">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="342"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donate Effortlesly to NGO'S World Wide!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xzR-kq-OLb">
-                                <rect key="frame" x="16.5" y="342" width="310" height="145"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L43-Vd-JDd">
+                                <rect key="frame" x="0.0" y="0.0" width="336" height="249"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="world_full" translatesAutoresizingMaskIntoConstraints="NO" id="6PH-cl-ixx">
+                                        <rect key="frame" x="0.0" y="0.0" width="336" height="249"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="atx-6I-scZ">
+                                <rect key="frame" x="0.0" y="249" width="336" height="249"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure Payments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MKh-UD-HjX">
+                                        <rect key="frame" x="0.0" y="0.0" width="336" height="96"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEZ-BF-yOd">
+                                        <rect key="frame" x="0.0" y="96" width="336" height="153"/>
+                                        <color key="backgroundColor" red="0.086274509799999996" green="0.20000000000000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Connect&amp;Care utilizes Apple Pay to ensure your donations reaches its destination in the fastest, most secure way possible. 
+</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MKh-UD-HjX" firstAttribute="top" secondItem="atx-6I-scZ" secondAttribute="top" id="0X1-Mx-GVP"/>
+                                    <constraint firstAttribute="trailing" secondItem="UEZ-BF-yOd" secondAttribute="trailing" id="60Z-NU-ydx"/>
+                                    <constraint firstAttribute="bottom" secondItem="UEZ-BF-yOd" secondAttribute="bottom" id="A48-x1-8mP"/>
+                                    <constraint firstItem="UEZ-BF-yOd" firstAttribute="leading" secondItem="atx-6I-scZ" secondAttribute="leading" id="KDW-qa-yU4"/>
+                                    <constraint firstItem="MKh-UD-HjX" firstAttribute="leading" secondItem="atx-6I-scZ" secondAttribute="leading" id="YfM-71-WlM"/>
+                                    <constraint firstAttribute="trailing" secondItem="MKh-UD-HjX" secondAttribute="trailing" id="otg-Fa-ash"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="xzR-kq-OLb" firstAttribute="top" secondItem="X89-Eh-HAh" secondAttribute="bottom" id="ANR-Xk-Ad9"/>
-                            <constraint firstAttribute="trailing" secondItem="X89-Eh-HAh" secondAttribute="trailing" id="KyU-7G-dnc"/>
-                            <constraint firstItem="X89-Eh-HAh" firstAttribute="top" secondItem="RvP-Tj-gUn" secondAttribute="top" id="bGl-QO-gsl"/>
-                            <constraint firstItem="X89-Eh-HAh" firstAttribute="leading" secondItem="RvP-Tj-gUn" secondAttribute="leading" id="g86-Xr-kur"/>
-                            <constraint firstAttribute="trailing" secondItem="xzR-kq-OLb" secondAttribute="trailing" constant="16" id="je2-Gj-y8i"/>
-                            <constraint firstItem="xzR-kq-OLb" firstAttribute="top" secondItem="X89-Eh-HAh" secondAttribute="bottom" id="lbl-ki-8Dx"/>
-                            <constraint firstItem="xzR-kq-OLb" firstAttribute="leading" secondItem="RvP-Tj-gUn" secondAttribute="leading" constant="16" id="lnC-ec-Wgz"/>
+                            <constraint firstAttribute="trailing" secondItem="atx-6I-scZ" secondAttribute="trailing" id="4ba-r6-YFz"/>
+                            <constraint firstAttribute="bottom" secondItem="atx-6I-scZ" secondAttribute="bottom" id="aL2-4f-Dq4"/>
+                            <constraint firstItem="atx-6I-scZ" firstAttribute="leading" secondItem="YZT-5E-ngm" secondAttribute="leading" id="sgk-Gf-8pV"/>
                         </constraints>
                     </stackView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="1" green="0.27058823529999998" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.086274509799999996" green="0.20000000000000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="RvP-Tj-gUn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Obo-UM-wOc"/>
-                <constraint firstItem="RvP-Tj-gUn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YNw-Z0-oEZ"/>
-                <constraint firstAttribute="trailing" secondItem="RvP-Tj-gUn" secondAttribute="trailing" id="boh-re-X1G"/>
-                <constraint firstAttribute="bottom" secondItem="RvP-Tj-gUn" secondAttribute="bottom" id="vGU-9Z-3p3"/>
+                <constraint firstItem="YZT-5E-ngm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1is-Se-2tm"/>
+                <constraint firstAttribute="bottom" secondItem="YZT-5E-ngm" secondAttribute="bottom" id="SOe-XT-qtZ"/>
+                <constraint firstAttribute="trailing" secondItem="YZT-5E-ngm" secondAttribute="trailing" constant="25" id="cK0-cl-k1l"/>
+                <constraint firstItem="YZT-5E-ngm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="25" id="dsL-8y-oyw"/>
             </constraints>
-            <size key="customSize" width="561" height="700"/>
-            <point key="canvasLocation" x="142.5" y="160"/>
+            <size key="customSize" width="604" height="711"/>
+            <connections>
+                <outlet property="imageView" destination="6PH-cl-ixx" id="IJg-FW-GYv"/>
+                <outlet property="onbardingTitle" destination="MKh-UD-HjX" id="w9h-SX-dgR"/>
+                <outlet property="onboardingDescription" destination="UEZ-BF-yOd" id="Cuq-Ie-QOT"/>
+            </connections>
+            <point key="canvasLocation" x="164" y="165"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="world_full" width="1604" height="1642"/>
+    </resources>
 </document>

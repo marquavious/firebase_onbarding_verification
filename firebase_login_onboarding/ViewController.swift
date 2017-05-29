@@ -7,21 +7,41 @@
 //
 
 import UIKit
+//loginButtonPressed
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+protocol LoginSegueDelegate {
+    func showLogin()
+}
+
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, LoginSegueDelegate {
+    
+    func showLogin() {
+        performSegue(withIdentifier: "loginButtonPressed", sender: self)
+    }
+
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var pageIndicator: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var signUpButton: UIButton!
     let nib = UINib(nibName: "OnboardingCollectionViewCell", bundle: nil)
+    
+    var descriptions = ["Welcome To Connect&Care: Your innovative solution to  help make the world a better place!","Connect&Care allows you donate seamlessly to over 20+ verified non profits worldwide.","Your donations will go toward global projects like, clean water, health care, community building, education and more!","Connect&Care utilizes Apple Pay to ensure your donations reaches its destination in the fastest, most secure way possible. ","Sign up to try the future of philanthropy! "]
+    var images:[UIImage] = [#imageLiteral(resourceName: "world_full"),#imageLiteral(resourceName: "hand_heart"),#imageLiteral(resourceName: "world_in_hand")]
+    var titles = ["Welcome!", "Multiple Non Profits","Support Global Projects"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(nib, forCellWithReuseIdentifier: "OnboardingCollectionViewCell")
-        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-        pageIndicator.numberOfPages = 3
+        setUpFunctions()
         collectionView.delegate = self
         collectionView.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
+        signUpButton.addCornerRadius(4)
+        loginButton.addCornerRadius(4)
+    }
+    
+    func setUpFunctions(){
+        collectionView.register(nib, forCellWithReuseIdentifier: "OnboardingCollectionViewCell")
+        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
+        pageIndicator.numberOfPages = 3 // Hard coded for now
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -29,80 +49,64 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func checkToSeeIfUserIsAtTheEndOfOnboarding(input:Int, target: Int) ->Bool {
-        if input == target {
-            return true
-        }else{
-            return false
-        }
-        
+        return input == target
     }
+    
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        let page = collectionView.contentOffset.x / collectionView.frame.size.width
-        pageIndicator.currentPage = Int(page)
+        let page = Int(collectionView.contentOffset.x / collectionView.frame.size.width)
+        pageIndicator.currentPage = page
         
-        if checkToSeeIfUserIsAtTheEndOfOnboarding(input: Int(page), target: 2){
-            signUp()
+        if checkToSeeIfUserIsAtTheEndOfOnboarding(input: page, target: 2){
+            performSegue(withIdentifier: "signUp", sender: self)
         } else{
-
+            // If its not at the end, move to the next page
             collectionView.setContentOffset(CGPoint(x:  CGFloat(page+1) * collectionView.bounds.size.width , y: 0), animated: true)
         }
     }
     
-    func signUp(){
-        performSegue(withIdentifier: "signUp", sender: self)
-    }
-    
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = scrollView.contentOffset.x / scrollView.frame.size.width
-        pageIndicator.currentPage = Int(page)
-        if checkToSeeIfUserIsAtTheEndOfOnboarding(input: Int(page), target: 2){
+        let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageIndicator.currentPage = page
+        
+        if checkToSeeIfUserIsAtTheEndOfOnboarding(input: page, target: 2){
             signUpButton.setTitle("Sign Up", for: .normal)
         } else{
             signUpButton.setTitle("Next", for: .normal)
         }
     }
-    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        let page = scrollView.contentOffset.x / scrollView.frame.size.width
-//        pageIndicator.currentPage = Int(page)
-//        if checkToSeeIfUserIsAtTheEndOfOnboarding(input: Int(page), target: 2){
-//            signUpButton.setTitle("Sign Up", for: .normal)
-//        } else{
-//            signUpButton.setTitle("Next", for: .normal)
-//        }
-//    }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let page = Int(collectionView.contentOffset.x / collectionView.frame.size.width)
+        pageIndicator.currentPage = page
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
+        print(indexPath)
+        print(descriptions[page])
+        cell.onboardingDescription.text = descriptions[page]
+        cell.onbardingTitle.text = titles[page]
+        cell.imageView.image = images[page]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath)
         
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 3 // Hard coded for now
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "signUp"{
+            let destination = segue.destination as! SignUpViewController
+            destination.delegate = self
+        }
     }
-    
-    
 }
 
-extension CGRect {
-    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
-        self.init(x:x, y:y, width:w, height:h)
-    }
-}
 

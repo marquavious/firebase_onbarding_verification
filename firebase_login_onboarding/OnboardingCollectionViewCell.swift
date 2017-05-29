@@ -9,10 +9,13 @@
 import UIKit
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var onboardingDescription: UILabel!
+    
+    @IBOutlet weak var onbardingTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

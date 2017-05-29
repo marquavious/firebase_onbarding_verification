@@ -12,15 +12,18 @@ class SucessViewController: UIViewController {
 
     var delegate: CloseModelDelegate?
     
+    @IBOutlet weak var signUpButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        signUpButton.addCornerRadius(4.5)
+        addSwipeDownFunction()
+       
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        delegate?.stopLoader()
+        delegate?.stopLoaderFromDelegate()
     }
 
     override func didReceiveMemoryWarning() {
